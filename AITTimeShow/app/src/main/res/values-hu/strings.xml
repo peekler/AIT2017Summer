@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AITTimeShow</string>
+    <string name="button_show_time">Mutasd az időt</string>
+    <string name="error_empty">Nem lehet üres</string>
+
+    <string name="time_message">%1$s, az idő: %2$s</string>
+
+</resources>
