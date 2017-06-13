@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -65,6 +66,12 @@ public class GameActivity extends AppCompatActivity {
         randomNum = new Random(System.currentTimeMillis()).nextInt(10);
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "HAHA you have to win the game to exit!", Toast.LENGTH_SHORT).show();
+        
+        //super.onBackPressed();
+    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
