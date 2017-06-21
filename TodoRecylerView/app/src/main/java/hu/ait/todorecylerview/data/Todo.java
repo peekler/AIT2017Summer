@@ -1,8 +1,17 @@
 package hu.ait.todorecylerview.data;
 
-public class Todo {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Todo extends RealmObject {
+
+    @PrimaryKey
+    private String todoId;
+
     private String todoTitle;
     private boolean done;
+
+    public Todo() {}
 
     public Todo(String todoTitle, boolean done) {
         this.todoTitle = todoTitle;
@@ -23,5 +32,13 @@ public class Todo {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public String getTodoId() {
+        return todoId;
+    }
+
+    public void setTodoId(String todoId) {
+        this.todoId = todoId;
     }
 }
