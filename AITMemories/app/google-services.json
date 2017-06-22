@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "955394884872",
+    "firebase_url": "https://aitmemories-19e4d.firebaseio.com",
+    "project_id": "aitmemories-19e4d",
+    "storage_bucket": "aitmemories-19e4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955394884872:android:89b4b025ff2cd227",
+        "android_client_info": {
+          "package_name": "hu.ait.aitmemories"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955394884872-cc0vhv1oh1s1pmg8l16nhir5reqjeqk4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hu.ait.aitmemories",
+            "certificate_hash": "067230671d278aecb67a60d098940e754873ffc8"
+          }
+        },
+        {
+          "client_id": "955394884872-sm4fsukjbfo56di65bm43tk16ii8ofcl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbXlMcPpRS9J5VsoYT6WJ1Trj3t_AFDVU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955394884872-sm4fsukjbfo56di65bm43tk16ii8ofcl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
