@@ -62,8 +62,6 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        
-        
     }
 
     @OnClick(R.id.btnRegister)
