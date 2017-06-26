@@ -89,7 +89,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_IMAGE) {
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_IMAGE) {
             Bitmap img = (Bitmap) data.getExtras().get("data");
             imgAttach.setImageBitmap(img);
             imgAttach.setVisibility(View.VISIBLE);
