@@ -4,6 +4,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -22,8 +25,11 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements
         MyLocationMonitor.MyLocationListener, OnMapReadyCallback {
@@ -126,17 +132,42 @@ public class MainActivity extends AppCompatActivity implements
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        mMap.setTrafficEnabled(true);
+        //mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setAllGesturesEnabled(true);
+
+
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
                 if (markerTarget == null) {
                     MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Target");
                     markerTarget = mMap.addMarker(markerOptions);
+                    markerTarget.setDraggable(true);
                 } else {
                     markerTarget.setPosition(latLng);
                 }
 
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                try {
+                    Geocoder geocoder = new Geocoder(MainActivity.this);
+                    List<Address> addressList = null;
+                    addressList = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+                    String address = addressList.get(0).getAddressLine(0)+"\n"+
+                            addressList.get(0).getAddressLine(1)+"\n"+
+                            addressList.get(0).getAddressLine(2)+"\n"+
+                            addressList.get(0).getAddressLine(3);
+
+                    Toast.makeText(MainActivity.this,
+                            "Target: "+address, Toast.LENGTH_LONG).show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
@@ -145,6 +176,14 @@ public class MainActivity extends AppCompatActivity implements
         /*LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
+
+        PolylineOptions polyLineOpts = new PolylineOptions().add(new LatLng(44, 19),
+                new LatLng(44, 26),
+                new LatLng(48, 26));
+
+        Polyline polyline = mMap.addPolyline(polyLineOpts);
+        polyline.setColor(Color.GREEN);
+
     }
 
 
